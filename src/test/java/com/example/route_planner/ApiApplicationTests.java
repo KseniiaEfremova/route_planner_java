@@ -34,6 +34,24 @@ class ApiApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().string(containsString("[{\"id\":\"SOL\",\"name\":\"Sol\",\"connections\":" +
 						"[{\"id\":\"SIR\",\"hu\":\"200\"},{\"id\":\"PRO\",\"hu\":\"120\"}]}]")));
+
+		this.mockMvc.perform(get("/accelerators/SOL"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("{\"id\":\"SOL\",\"name\":\"Sol\",\"connections\":" +
+						"[{\"id\":\"SIR\",\"hu\":\"200\"},{\"id\":\"PRO\",\"hu\":\"120\"}]}")));
+
+		this.mockMvc.perform(get("/accelerators/QWE/to/SOL"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("0")));
+
+		this.mockMvc.perform(get("/transport/111"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("0")));
+
+
 	}
 
 }
