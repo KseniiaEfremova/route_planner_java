@@ -17,7 +17,6 @@ public class AcceleratorService {
         connections.add(new PriceToAccelerator("PRO", "120"));
 
         accelerators.add(new Accelerator("SOL", "Sol", connections));
-
         return accelerators;
     }
 }

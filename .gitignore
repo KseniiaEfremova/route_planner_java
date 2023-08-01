@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+db/DynamoDBLocal.jar
+db/DynamoDBLocal_lib/
+db/LICENSE.txt
+db/README.txt
+db/THIRD-PARTY-LICENSES.txt
+db/shared-local-instance.db
+
+

@@ -1,5 +1,10 @@
 package com.example.route_planner.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+@DynamoDBTable(tableName = "accelerator")
 public class PriceToAccelerator {
     private String id;
     private String hu;
@@ -8,7 +13,10 @@ public class PriceToAccelerator {
         this.id = id;
         this.hu = hu;
     }
+    public PriceToAccelerator() {
+    }
 
+    @DynamoDBHashKey(attributeName = "id")
     public String getId() {
         return id;
     }
@@ -17,6 +25,7 @@ public class PriceToAccelerator {
         this.id = id;
     }
 
+    @DynamoDBAttribute(attributeName = "hu")
     public String getHu() {
         return hu;
     }
