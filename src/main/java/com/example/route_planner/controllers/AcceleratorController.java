@@ -1,6 +1,7 @@
 package com.example.route_planner.controllers;
 
 import com.example.route_planner.models.Accelerator;
+import com.example.route_planner.models.TripCost;
 import com.example.route_planner.services.AcceleratorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,6 @@ import java.util.List;
 
 @RestController
 public class AcceleratorController {
-
     private final AcceleratorService acceleratorService;
 
     public AcceleratorController(AcceleratorService acceleratorService) {
@@ -24,15 +24,9 @@ public class AcceleratorController {
     }
 
     @GetMapping("/accelerators/{id}")
-    public Object getAcceleratorByID(@PathVariable String id) {
-        List<Accelerator> accelerators = acceleratorService.list();
+    public Accelerator getAcceleratorByID(@PathVariable String id) {
 
-        for (Accelerator accelerator : accelerators) {
-            if (accelerator.getId().equals(id)) {
-                return accelerator;
-            }
-        }
-        return null;
+        return acceleratorService.getAcceleratorByID(id);
     }
 
     @GetMapping("/accelerators/{id1}/to/{id2}")
@@ -42,10 +36,10 @@ public class AcceleratorController {
     }
 
     @GetMapping("/transport/{distance}")
-    public int getCheapestVehicle(@PathVariable int distance,
-                                     @RequestParam(value = "passengers", defaultValue = "1") int passengers,
-                                     @RequestParam(value = "parking", defaultValue = "1") int parking) {
+    public TripCost getCheapestVehicle(@PathVariable int distance,
+                                       @RequestParam(value = "passengers", defaultValue = "1") int passengers,
+                                       @RequestParam(value = "parking", defaultValue = "0") int parking) {
 
-        return 0;
+        return acceleratorService.getCheapestVehicle(distance, passengers, parking);
     }
 }

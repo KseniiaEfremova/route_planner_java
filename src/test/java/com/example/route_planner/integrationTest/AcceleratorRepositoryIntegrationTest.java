@@ -62,8 +62,8 @@ public class AcceleratorRepositoryIntegrationTest {
     @Test
     public void testAccelerator() {
         List<PriceToAccelerator> connections = new ArrayList<>();
-        connections.add(new PriceToAccelerator("SIR", "200"));
-        connections.add(new PriceToAccelerator("PRO", "120"));
+        connections.add(new PriceToAccelerator("SIR", 200));
+        connections.add(new PriceToAccelerator("PRO", 120));
         Accelerator accelerator = new Accelerator("SOL", "Sun", connections);
         repository.save(accelerator);
         List<Accelerator> result = (List<Accelerator>) repository.findAll();
@@ -73,8 +73,8 @@ public class AcceleratorRepositoryIntegrationTest {
         assertEquals("Sun", returnedResult.getName());
         assertEquals(returnedResult.getConnections().size(), 2);
         assertEquals(returnedResult.getConnections().get(0).getId(), "SIR");
-        assertEquals(returnedResult.getConnections().get(0).getHu(), "200");
+        assertEquals(returnedResult.getConnections().get(0).getHu(), 200);
         assertEquals(returnedResult.getConnections().get(1).getId(), "PRO");
-        assertEquals(returnedResult.getConnections().get(1).getHu(), "120");
+        assertEquals(returnedResult.getConnections().get(1).getHu(), 120);
     }
 }

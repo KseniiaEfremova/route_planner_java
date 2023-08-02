@@ -7,9 +7,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 @DynamoDBTable(tableName = "accelerator")
 public class PriceToAccelerator {
     private String id;
-    private String hu;
+    private int hu;
 
-    public PriceToAccelerator(String id, String hu) {
+    public PriceToAccelerator(String id, int hu) {
         this.id = id;
         this.hu = hu;
     }
@@ -26,11 +26,11 @@ public class PriceToAccelerator {
     }
 
     @DynamoDBAttribute(attributeName = "hu")
-    public String getHu() {
+    public int getHu() {
         return hu;
     }
 
-    public void setHu(String hu) {
+    public void setHu(int hu) {
         this.hu = hu;
     }
 
