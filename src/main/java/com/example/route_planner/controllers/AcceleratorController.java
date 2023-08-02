@@ -1,6 +1,7 @@
 package com.example.route_planner.controllers;
 
 import com.example.route_planner.models.Accelerator;
+import com.example.route_planner.models.PriceToAccelerator;
 import com.example.route_planner.models.TripCost;
 import com.example.route_planner.services.AcceleratorService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,8 @@ public class AcceleratorController {
 
     @GetMapping("/accelerators/{id1}/to/{id2}")
     public int getCheapestRoute(@PathVariable String id1,
-                                   @PathVariable String id2) {
-        return 0;
+                                               @PathVariable String id2) {
+        return acceleratorService.getCheapestRoute(id1, id2);
     }
 
     @GetMapping("/transport/{distance}")
